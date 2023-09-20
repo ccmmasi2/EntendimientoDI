@@ -1,0 +1,37 @@
+﻿@model IEnumerable<string>
+@inject IServiceCiudades _servicioCiudadesVista;
+@{
+    ViewData["Title"] = "Inyección de Dependencias";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Inyección de Dependencias (DI)</h1>
+</div>
+
+<div>
+    <h3>Ciudades</h3>
+    
+    @{
+        List<string> ciudadesDesdeVista = _servicioCiudadesVista.GetCiudades();
+    }
+
+    <ul>
+        @foreach (string ciudad in ciudadesDesdeVista)
+        {
+            <li>@ciudad</li>
+        }
+
+        @* @foreach(string ciudad in Model)
+        {
+            <li>@ciudad</li>
+        } *@
+    </ul>
+</div>
+
+<h3>@ViewBag.InstanciaIdServidor1</h3>
+<h3>@ViewBag.InstanciaIdServidor2</h3>
+<h3>@ViewBag.InstanciaIdServidor3</h3>
+<br />
+<h3>@ViewBag.InstanciaIdServicioChildScope</h3>
+<br />
+<h3>@_servicioCiudadesVista.IdServicio</h3>
